@@ -12,6 +12,8 @@ XFCE 桌面、完整中文环境、Wine 兼容层开箱即用。
 | 项目 | 内容 |
 | --- | --- |
 | 镜像 | `open-mahiro-linux-13.7.0-amd64.iso`（945 MB） |
+| 下载 | **[⬇ Release v13.7.0](https://github.com/yuanshen1834-design/open-mahiro-linux/releases/download/v13.7.0/open-mahiro-linux-13.7.0-amd64.iso)** |
+| SHA256 | `1d44776f3b49a7db610d6174f87da8b6324140b474e06643be6a3f9225fcb2e4` |
 | 启动 | BIOS + UEFI 双启动，isohybrid，可写 U 盘 |
 | 类型 | 安装型（非 Live），装进虚拟机或整块硬盘 |
 | **用户名** | **`mahiro`** |
