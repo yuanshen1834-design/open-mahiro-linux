@@ -45,13 +45,13 @@ cat > /etc/issue <<'EOF'
   \____/| .__/ \___|_| |_|_|  |_|\__,_|_| |_|_|_|  \___/ |_____||_|_| |_|\__,_/_/\_\
         |_|
 
-  open绪山真寻Linux 13 \n \l
+  open mahiro Linux 13 (Mahiro)  \n \l
 EOF
 cat > /etc/motd <<EOF
 
-  欢迎使用 $PRETTY
-  Windows 软件：双击 .exe 即可安装，或从菜单「open mahiro → 安装 Windows 软件」打开。
-  输入法：默认已启用 fcitx5 中文输入法，Ctrl+空格 切换。
+  Welcome to open mahiro Linux 13 (Mahiro)
+  Windows apps: double-click any .exe, or use "Install Windows App" in the menu.
+  Input method: fcitx5 is enabled, press Ctrl+Space to switch.
 
 EOF
 
@@ -84,7 +84,7 @@ desktop-color: "#101018"
     width = 100%
     align = "center"
     color = "#9a9ab0"
-    text = "open绪山真寻Linux 13 (Mahiro)  ·  Debian GNU/Linux"
+    text = "open mahiro Linux 13 (Mahiro)  -  Debian GNU/Linux"
 }
 EOF
 fi

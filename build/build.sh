@@ -1,7 +1,7 @@
 #!/bin/bash
 # 组装 open mahiro Linux ISO
 set -e
-ISO_OUT=/mnt/g/distro/open-mahiro-linux-13.7.0-amd64.iso
+ISO_OUT=/mnt/g/distro/open-mahiro-linux-13.7.0-amd64-r3.iso
 cd /root/iso
 
 echo "== 1. 拷入 overlay =="
@@ -24,29 +24,29 @@ prompt 0
 timeout 150
 default vesamenu.c32
 
-menu title  open绪山真寻Linux 13 (Mahiro)
+menu title  open mahiro Linux 13.7.0 (Mahiro)
 
-label auto
-    menu label ^安装 open绪山真寻Linux（自动，推荐）
+label install
+    menu label ^Install open mahiro Linux
     menu default
     kernel /install.amd/vmlinuz
     append vga=788 auto=true priority=critical preseed/file=/cdrom/open-mahiro/preseed.cfg --- quiet
     initrd /install.amd/gtk/initrd.gz
 
-label gtk
-    menu label ^图形界面安装（手动）
+label text
+    menu label ^Text mode install
+    kernel /install.amd/vmlinuz
+    append vga=788 auto=true priority=critical preseed/file=/cdrom/open-mahiro/preseed.cfg --- quiet
+    initrd /install.amd/initrd.gz
+
+label manual
+    menu label Install ^without preseed (fully manual)
     kernel /install.amd/vmlinuz
     append vga=788 --- quiet
     initrd /install.amd/gtk/initrd.gz
 
-label text
-    menu label ^文本模式安装（手动）
-    kernel /install.amd/vmlinuz
-    append vga=788 --- quiet
-    initrd /install.amd/initrd.gz
-
 label rescue
-    menu label ^救援模式
+    menu label ^Rescue mode
     kernel /install.amd/vmlinuz
     append vga=788 rescue/enable=true --- quiet
     initrd /install.amd/initrd.gz
@@ -57,20 +57,25 @@ cp -f boot/grub/grub.cfg boot/grub/grub.cfg.orig
 {
 cat <<'EOF'
 set default=0
-menuentry '安装 open绪山真寻Linux（自动，推荐）' {
+menuentry 'Install open mahiro Linux' {
     set background_color=black
     linux    /install.amd/vmlinuz vga=788 auto=true priority=critical preseed/file=/cdrom/open-mahiro/preseed.cfg --- quiet
     initrd   /install.amd/gtk/initrd.gz
 }
-menuentry '图形界面安装（手动）' {
+menuentry 'Text mode install' {
+    set background_color=black
+    linux    /install.amd/vmlinuz vga=788 auto=true priority=critical preseed/file=/cdrom/open-mahiro/preseed.cfg --- quiet
+    initrd   /install.amd/initrd.gz
+}
+menuentry 'Install without preseed (fully manual)' {
     set background_color=black
     linux    /install.amd/vmlinuz vga=788 --- quiet
     initrd   /install.amd/gtk/initrd.gz
 }
-menuentry '文本模式安装（手动）' {
+menuentry 'Rescue mode' {
     set background_color=black
-    linux    /install.amd/vmlinuz vga=788 --- quiet
-    initrd   /install.amd/initrd.gz
+    linux    /install.amd/vmlinuz vga=788 rescue/enable=true --- quiet
+    initrd   /install.amd/gtk/initrd.gz
 }
 EOF
 cat boot/grub/grub.cfg.orig
